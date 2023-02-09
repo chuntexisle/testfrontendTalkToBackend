@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      
+      function sendGetRequest() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8000/helloworld/", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            console.log(data);
+	    document.getElementById("response").innerHTML = xhr.responseText;
+          }
+        };
+        xhr.send();
+      }
+    </script>
+  </head>
+  <body>
+    <button id='submitBtn' onclick="sendGetRequest()">Get Data</button>
+    <div id='response'>
+    </div>
+  </body>
+</html>
+
